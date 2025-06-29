@@ -1,7 +1,6 @@
 package com.eliarojr.firstapp.service;
 
 import com.eliarojr.firstapp.entity.Department;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
