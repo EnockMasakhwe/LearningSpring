@@ -1,12 +1,14 @@
 package com.eliarojr.simple_api_practice.service;
 
 import com.eliarojr.simple_api_practice.entity.Department;
+import com.eliarojr.simple_api_practice.error.DepartmentNotFoundException;
 import com.eliarojr.simple_api_practice.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService{
@@ -25,8 +27,15 @@ public class DepartmentServiceImpl implements DepartmentService{
     }
 
     @Override
-    public Department fetchDepartmentById(Long departmentId) {
-        return departmentRepository.findById(departmentId).get();
+    public Department fetchDepartmentById(Long departmentId) throws DepartmentNotFoundException {
+        Optional<Department> department =
+        departmentRepository.findById(departmentId);
+
+        if(!department.isPresent()){
+            throw new DepartmentNotFoundException("Department not available!");
+        }
+
+        return department.get();
     }
 
     @Override
