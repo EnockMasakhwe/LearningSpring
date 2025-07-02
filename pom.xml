@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.eliarojr</groupId>
 	<artifactId>simple-api-practice</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>simple-api-practice</name>
 	<description>simple-api-practice</description>
 	<url/>
@@ -48,6 +48,11 @@
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>

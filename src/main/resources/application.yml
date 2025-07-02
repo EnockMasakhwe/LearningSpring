@@ -1,16 +1,56 @@
+server:
+  port: 8083
+
 spring:
+  profile:
+    active: qa
+
+
+---
+
+spring:
+  profile: dev
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     url: jdbc:mysql://localhost:3306/simple-api-practice
     password: Eliaro-14.
-  application:
-    name: simple-api-practice
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: 'true'
+    show-sql: true
 welcome:
   message: Welcome to my application!
-server:
-  port: '8083'
+
+---
+
+spring:
+  profile: qa
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/simple-api-practice-qa
+    password: Eliaro-14.
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to my application!
+
+---
+
+spring:
+  profile: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/simple-api-practice-prod
+    password: Eliaro-14.
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to my application!
+
