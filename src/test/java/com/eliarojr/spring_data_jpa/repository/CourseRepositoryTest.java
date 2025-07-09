@@ -1,6 +1,7 @@
 package com.eliarojr.spring_data_jpa.repository;
 
 import com.eliarojr.spring_data_jpa.entity.Course;
+import com.eliarojr.spring_data_jpa.entity.Student;
 import com.eliarojr.spring_data_jpa.entity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +84,29 @@ class CourseRepositoryTest {
         System.out.println("courses = " + courses);
     }
 
+    @Test
+    public void saveCourseWithStudentAndTeacher(){
+
+        Teacher teacher = Teacher.builder()
+                .firstName("Philip")
+                .lastName("Oyier")
+                .build();
+
+        Student student = Student.builder()
+                .firstName("Jude")
+                .lastName("Bellingham")
+                .emailId("bellingham@gmail.com")
+                .build();
+
+        Course course = Course.builder()
+                .credit(5)
+                .title("AI")
+                .teacher(teacher)
+                .build();
+        course.addStudents(student);
+
+        courseRepository.save(course);
+    }
 
 
 }
