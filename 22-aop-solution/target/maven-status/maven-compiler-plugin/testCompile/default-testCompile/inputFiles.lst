@@ -1,0 +1,16 @@
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/internal/account/JdbcAccountRepositoryTests.java
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/SystemTestConfig.java
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/internal/reward/JdbcRewardRepositoryTests.java
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/internal/RewardNetworkImplTests.java
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/CaptureSystemOutput.java
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/internal/restaurant/RestaurantTests.java
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/RewardNetworkTests.java
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/internal/StubRewardRepository.java
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/LoggingAspectTests.java
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/internal/restaurant/JdbcRestaurantRepositoryTests.java
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/internal/account/AccountTests.java
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/internal/StubRestaurantRepository.java
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/DbExceptionTestConfig.java
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/DBExceptionHandlingAspectTests.java
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/internal/StubAccountRepository.java
+/home/eliarojr/Documents/Programs/SpringbootPrograms/core-spring-labfiles/lab/22-aop-solution/src/test/java/rewards/internal/aspects/RepositoryPerformanceLogTest.java
