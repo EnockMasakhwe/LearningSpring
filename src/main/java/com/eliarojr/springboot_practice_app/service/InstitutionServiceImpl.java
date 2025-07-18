@@ -2,12 +2,14 @@ package com.eliarojr.springboot_practice_app.service;
 
 
 import com.eliarojr.springboot_practice_app.entity.Institution;
+import com.eliarojr.springboot_practice_app.error.InstitutionNotFoundException;
 import com.eliarojr.springboot_practice_app.repository.InstitutionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class InstitutionServiceImpl implements InstitutionService{
@@ -26,8 +28,14 @@ public class InstitutionServiceImpl implements InstitutionService{
     }
 
     @Override
-    public Institution fetchInstitutionById(Long institutionId) {
-        return institutionRepository.findById(institutionId).get();
+    public Institution fetchInstitutionById(Long institutionId) throws InstitutionNotFoundException {
+        Optional<Institution> institution =institutionRepository.findById(institutionId);
+
+        if(!institution.isPresent()){
+            throw new InstitutionNotFoundException("Department not available");
+        }
+
+        return  institution.get();
     }
 
     @Override

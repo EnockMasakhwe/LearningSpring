@@ -1,6 +1,7 @@
 package com.eliarojr.springboot_practice_app.service;
 
 import com.eliarojr.springboot_practice_app.entity.Institution;
+import com.eliarojr.springboot_practice_app.error.InstitutionNotFoundException;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ public interface InstitutionService {
 
     public List<Institution> fetchInstitutionList();
 
-    public Institution fetchInstitutionById(Long institutionId);
+    public Institution fetchInstitutionById(Long institutionId) throws InstitutionNotFoundException;
 
     public Institution fetchInstitutionByName(String institutionName);
 
