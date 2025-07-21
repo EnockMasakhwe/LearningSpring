@@ -32,7 +32,7 @@ public class InstitutionServiceImpl implements InstitutionService{
         Optional<Institution> institution =institutionRepository.findById(institutionId);
 
         if(!institution.isPresent()){
-            throw new InstitutionNotFoundException("Department not available");
+            throw new InstitutionNotFoundException("Institution not available");
         }
 
         return  institution.get();
