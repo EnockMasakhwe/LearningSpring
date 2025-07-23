@@ -27,7 +27,6 @@ class JobControllerTest {
 
     @MockitoBean
     private JobService jobService;
-
     private Job job;
 
     @BeforeEach
@@ -65,7 +64,8 @@ class JobControllerTest {
 
     @Test
     void fetchJobById() throws Exception {
-        Mockito.when(jobService.fetchJobById(1L)).thenReturn(job);
+        Mockito.when(jobService.fetchJobById(1L))
+                .thenReturn(job);
 
         mockMvc.perform(get("/jobs/1")
                 .contentType(MediaType.APPLICATION_JSON))
