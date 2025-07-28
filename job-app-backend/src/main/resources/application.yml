@@ -1,0 +1,60 @@
+server:
+  port: 8085
+
+spring:
+  profiles:
+    active: qa
+
+---
+
+spring:
+  profile: dev
+  application:
+    name: job-app-backend
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: Eliaro-14.
+    url: jdbc:mysql://localhost:3306/job-app-backend
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Hello Tech Community!
+
+---
+
+spring:
+  profile: prod
+  application:
+    name: job-app-backend
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: Eliaro-14.
+    url: jdbc:mysql://localhost:3306/job-app-backend-prod
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Hello Tech Community!
+
+---
+
+spring:
+  profile: qa
+  application:
+    name: job-app-backend
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: Eliaro-14.
+    url: jdbc:mysql://localhost:3306/job-app-backend-qa
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Hello Tech Community!

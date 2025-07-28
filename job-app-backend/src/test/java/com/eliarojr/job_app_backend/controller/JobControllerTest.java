@@ -31,7 +31,7 @@ class JobControllerTest {
 
     @BeforeEach
     void setUp() {
-        Job job = Job.builder()
+        job = Job.builder()
                 .jobName("Data Analyst")
                 .jobCode("JB-08")
                 .jobDescription("Analyze and interpret data")

@@ -35,7 +35,7 @@ class JobRepositoryTest {
     }
 
     @Test
-    public void whenFindById_thenReturnDepartment(){
+    public void whenFindById_thenReturnJob(){
         Job job = jobRepository.findById(1L).get();
         assertEquals(job.getJobName(), "Quality Assurance");
     }
