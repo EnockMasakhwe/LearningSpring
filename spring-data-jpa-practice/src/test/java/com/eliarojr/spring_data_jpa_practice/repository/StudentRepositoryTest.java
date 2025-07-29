@@ -91,6 +91,33 @@ class StudentRepositoryTest {
         System.out.println("studentList = " + studentList);
     }
 
+    //JPQL
+    @Test
+    public void printGetStudentByEmailAddress(){
+        Student student = studentRepository.getStudentByEmailAddress("kroos@gmail.com");
+        System.out.println("student = " + student);
+    }
+
+    //JPQL
+    @Test
+    public void printGetStudentFirstNameByEmailAddress(){
+        String firstName = studentRepository.getStudentFirstNameByEmailAddress("mbappe@gmail.com");
+        System.out.println("firstName = " + firstName);
+    }
+
+    //Native
+    @Test
+    public void printGetStudentByEmailAddressNative(){
+        Student student = studentRepository.getStudentByEmailAddressNative("kroos@gmail.com");
+        System.out.println("student = " + student);
+    }
+
+    //Native named param
+    @Test
+    public void printGetStudentByEmailAddressNativeNamedParam(){
+        Student student = studentRepository.getStudentByEmailAddressNativeNamedParam("mbappe@gmail.com");
+        System.out.println("student = " + student);
+    }
 
 
 
