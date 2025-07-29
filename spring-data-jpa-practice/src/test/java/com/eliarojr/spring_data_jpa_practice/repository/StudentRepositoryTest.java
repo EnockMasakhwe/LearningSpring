@@ -40,9 +40,9 @@ class StudentRepositoryTest {
                 .build();
 
         Student student = Student.builder()
-                .firstName("Toni")
-                .lastName("Kroos")
-                .emailId("kroos@gmail.com")
+                .firstName("Karim")
+                .lastName("Benzema")
+                .emailId("benzema@gmail.com")
                 .guardian(guardian)
                 .build();
 
@@ -54,4 +54,44 @@ class StudentRepositoryTest {
         List <Student> studentList = studentRepository.findAll();
         System.out.println("studentList = " + studentList);
     }
+
+    @Test
+    public void printStudentByFirstName(){
+        List <Student> studentList = studentRepository.findByFirstNameIgnoreCase("luca");
+        System.out.println("studentList = " + studentList);
+    }
+
+    @Test
+    public void printStudentByFirstNameContaining(){
+        List <Student> studentList = studentRepository.findByFirstNameContainingIgnoreCase("lu");
+        System.out.println("studentList = " + studentList);
+    }
+
+    @Test
+    public void printStudentByLastName(){
+        List <Student> studentList = studentRepository.findByLastNameNotNull();
+        System.out.println("studentList = " + studentList);
+    }
+
+    @Test
+    public void printStudentsById(){
+        List <Student> studentList = studentRepository.findByStudentIdBetween(1L,50L);
+        System.out.println("studentList = " + studentList);
+    }
+
+    @Test
+    public void printStudentByGuardianName(){
+        List <Student> studentList = studentRepository.findByGuardianName("Xabi");
+        System.out.println("studentList = " + studentList);
+    }
+
+    @Test
+    public void printStudentByFirstNameAndLastName(){
+        Student studentList = studentRepository.findByFirstNameAndLastNameIgnoreCase("luca","modric");
+        System.out.println("studentList = " + studentList);
+    }
+
+
+
+
 }
