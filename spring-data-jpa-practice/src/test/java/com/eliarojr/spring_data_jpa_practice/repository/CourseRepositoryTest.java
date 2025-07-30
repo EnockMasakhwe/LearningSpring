@@ -1,6 +1,7 @@
 package com.eliarojr.spring_data_jpa_practice.repository;
 
 import com.eliarojr.spring_data_jpa_practice.entity.Course;
+import com.eliarojr.spring_data_jpa_practice.entity.Student;
 import com.eliarojr.spring_data_jpa_practice.entity.Teacher;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
@@ -88,6 +89,30 @@ class CourseRepositoryTest {
         List<Course> courses = courseRepository.findByTitleContaining("M",firstPageTenRecords).getContent();
 
         System.out.println("courses = " + courses);
+    }
+
+    @Test
+    public void saveCourseWithStudentAndTeacher(){
+        Teacher teacher = Teacher.builder()
+                .firstName("Thomas")
+                .lastName("Frank")
+                .build();
+
+        Student student = Student.builder()
+                .firstName("Rodrygo")
+                .lastName("Goes")
+                .emailId("rodrygo@gmail.com")
+                .build();
+
+        Course course = Course.builder()
+                .title("AI/ML")
+                .credit(9)
+                .teacher(teacher)
+                .build();
+
+        course.addStudent(student);
+
+        courseRepository.save(course);
     }
 
 
