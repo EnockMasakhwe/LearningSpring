@@ -40,7 +40,10 @@ public class Course {
     private Integer credit;
 
     @OneToOne(
-            mappedBy = "course"
+            mappedBy = "course",
+            cascade = CascadeType.PERSIST
     )
     private CourseMaterial courseMaterial;
+
+
 }
