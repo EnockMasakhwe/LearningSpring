@@ -38,7 +38,7 @@ public class Teacher {
     )
     private String lastName;
 
-    @OneToMany(
+    /* @OneToMany(
             cascade = CascadeType.ALL
     )
     @JoinColumn(
@@ -46,4 +46,9 @@ public class Teacher {
             referencedColumnName = "teacherId"
     )
     private List <Course> courses;
+
+     */
+    @OneToMany( mappedBy = "teacher")
+    private List <Course> courses;
+
 }

@@ -19,39 +19,26 @@ class TeacherRepositoryTest {
 
     @Test
     public void saveTeacher(){
-        //Course material
-//        CourseMaterial postMat = CourseMaterial.builder()
-//                .url("www.postgresql.com")
-//                .build();
-//        CourseMaterial dockMat = CourseMaterial.builder()
-//                .url("www.docker.com")
-//                .build();
-//        CourseMaterial cloudMat = CourseMaterial.builder()
-//                .url("www.cloudcomputing.com")
-//                .build();
 
         //Course
-        Course postgreSQL = Course.builder()
-                .title("PostgreSQL")
+        Course sql = Course.builder()
+                .title("SQL")
                 .credit(7)
-                //.courseMaterial(postMat)
                 .build();
-        Course docker = Course.builder()
-                .title("Docker")
+        Course mongoDB = Course.builder()
+                .title("MongoDB")
                 .credit(6)
-                //.courseMaterial(dockMat)
                 .build();
-        Course cloud = Course.builder()
-                .title("Cloud Computing")
+        Course javaScript = Course.builder()
+                .title("JavaScript")
                 .credit(7)
-                //.courseMaterial(cloudMat)
                 .build();
 
         //Teacher
         Teacher teacher = Teacher.builder()
-                .firstName("Nelson")
-                .lastName("Djalo")
-                .courses(List.of(postgreSQL, docker, cloud))
+                .firstName("Dev")
+                .lastName("Tiro")
+                .courses(List.of(sql, mongoDB, javaScript))
                 .build();
 
         teacherRepository.save(teacher);
