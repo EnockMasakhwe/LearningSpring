@@ -1,7 +1,9 @@
 package com.eliarojr.spring_data_jpa_practice.repository;
 
 import com.eliarojr.spring_data_jpa_practice.entity.Student;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -39,6 +41,11 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
             nativeQuery = true
     )
     Student getStudentByEmailAddressNativeNamedParam(@Param("emailId") String emailId);
+
+    @Transactional
+    @Modifying
+    @Query("update Student s set s.firstName = :firstName where s.emailId = :emailId")
+    void updateStudentNameByEmailId(@Param("firstName") String firstName, @Param("emailId") String emailId);
 
 
 }
