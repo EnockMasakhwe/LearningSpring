@@ -2,6 +2,7 @@ package com.eliarojr.spring_security_client.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -9,10 +10,11 @@ import java.util.Calendar;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class VerificationToken {
 
     //Expiry time as 10 minutes
-    public static final int EXPIRY_TIME = 10;
+    public static final int EXPIRATION_TIME = 10;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,13 +33,19 @@ public class VerificationToken {
         super();
         this.token = token;
         this.user = user;
-        this.expirationTime = calculateExpirationDate(EXPIRY_TIME);
+        this.expirationTime = calculateExpirationDate(EXPIRATION_TIME);
     }
 
-    private Date calculateExpirationDate(int expiryTime) {
+    public VerificationToken(String token){
+        super();
+        this.token = token;
+        this.expirationTime = calculateExpirationDate(EXPIRATION_TIME);
+    }
+
+    private Date calculateExpirationDate(int expirationTime) {
         Calendar calender = Calendar.getInstance();
         calender.setTimeInMillis(new Date().getTime());
-        calender.add(Calendar.MINUTE, expiryTime);
+        calender.add(Calendar.MINUTE, expirationTime);
         return new Date(calender.getTime().getTime());
     }
 
