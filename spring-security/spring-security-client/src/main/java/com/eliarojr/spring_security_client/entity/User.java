@@ -2,7 +2,7 @@ package com.eliarojr.spring_security_client.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
+//User entity
 @Entity
 @Data
 public class User {

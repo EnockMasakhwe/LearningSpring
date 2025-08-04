@@ -13,6 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class WebSecurityConfig {
 
+    //Array of endpoints to be whitelisted despite being unauthenticated
     private static final String [] WHITE_LIST_URLS = {
             "/hello",
             "/register",
@@ -22,12 +23,14 @@ public class WebSecurityConfig {
             "/savePassword"
     };
 
+    //Password encoder to make sure that the password can't be read even by the program
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder(11);
     }
 
     @Bean
+    //Method to filter and whitelist urls
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)

@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@Slf4j
+@Slf4j //LOGGERS
 public class RegistrationController {
 
     @Autowired
@@ -25,6 +25,7 @@ public class RegistrationController {
     @Autowired
     private ApplicationEventPublisher publisher;
 
+    //Save registration details
     @PostMapping("/register")
     public String registerUser(@RequestBody UserModel userModel, final HttpServletRequest request){
         User user = userService.registerUser(userModel);
@@ -36,6 +37,7 @@ public class RegistrationController {
 
     }
 
+    //Verify registration
     @GetMapping("/verifyRegistration")
     public String verifyRegistration(@RequestParam("token") String token){
         String result = userService.validateVerificationToken(token);
@@ -47,6 +49,7 @@ public class RegistrationController {
 
     }
 
+    //Resend verification link
     @GetMapping("/resendVerifyToken")
     public String resendVerificationToken(@RequestParam("token")String oldToken, HttpServletRequest request){
         VerificationToken verificationToken = userService.generateNewVerificationToken(oldToken);
@@ -56,6 +59,7 @@ public class RegistrationController {
         return "Verification link sent.";
     }
 
+    //Save email to initiate reset password
     @PostMapping("/resetPassword")
     public String resetPassword(@RequestBody PasswordModel passwordModel, HttpServletRequest request){
         User user =  userService.findUserByEmail(passwordModel.getEmail());
@@ -68,6 +72,7 @@ public class RegistrationController {
         return url;
     }
 
+    //Validate email exists in the database then save new password
     @PostMapping("/savePassword")
     public  String savePassword(@RequestParam("token")String token, @RequestBody PasswordModel passwordModel){
         String result = userService.validatePasswordResetToken(token);
@@ -83,6 +88,7 @@ public class RegistrationController {
         }
     }
 
+    //Password reset token email
     private String passwordResetTokenMail(User user, String applicationUrl, String token) {
         //Send mail to user
         String url = applicationUrl + "/savePassword?token=" + token;
@@ -92,6 +98,7 @@ public class RegistrationController {
         return url;
     }
 
+    //Resend token email
     private void resendVerificationTokenMail(User user, String applicationUrl, VerificationToken verificationToken) {
         //Send mail to user
         String url = applicationUrl + "/verifyRegistration?token=" + verificationToken.getToken();
@@ -100,6 +107,7 @@ public class RegistrationController {
         log.info("Click the link to verify your account: {}",url);
     }
 
+    //Get base application url (server name and server port)
     private String applicationUrl(HttpServletRequest request) {
         return "http://" + request.getServerName() + ":" + request.getServerPort();
     }

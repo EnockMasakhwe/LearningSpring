@@ -21,6 +21,7 @@ public interface UserService {
 
     String validatePasswordResetToken(String token);
 
+    //Get optional users (whether they exist or not)
     Optional<User> getUserByPasswordResetToken(String token);
 
     void changePassword(User user, String newPassword);

@@ -21,6 +21,7 @@ public class VerificationToken {
     private String token;
     private Date expirationTime;
 
+    //Verification token has user_id as the foreign key (one to one mapping)
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "user_id",
@@ -29,6 +30,7 @@ public class VerificationToken {
     )
     private User user;
 
+    //Constructor
     public VerificationToken(User user, String token){
         super();
         this.token = token;
@@ -36,12 +38,15 @@ public class VerificationToken {
         this.expirationTime = calculateExpirationDate(EXPIRATION_TIME);
     }
 
+    /*
     public VerificationToken(String token){
         super();
         this.token = token;
         this.expirationTime = calculateExpirationDate(EXPIRATION_TIME);
     }
+     */
 
+    //Method to calculate expiration time
     private Date calculateExpirationDate(int expirationTime) {
         Calendar calender = Calendar.getInstance();
         calender.setTimeInMillis(new Date().getTime());

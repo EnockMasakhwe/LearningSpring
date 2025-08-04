@@ -1,7 +1,7 @@
 package com.eliarojr.spring_security_client.model;
 
 import lombok.Data;
-
+//Model
 @Data
 public class PasswordModel {
 

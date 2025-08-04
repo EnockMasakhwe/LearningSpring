@@ -20,6 +20,7 @@ public class PasswordResetToken {
     private String token;
     private Date expirationTime;
 
+    //PasswordResetToken table contains user_id as the foreign key (one to one mapping)
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "user_id",
@@ -28,6 +29,7 @@ public class PasswordResetToken {
     )
     private User user;
 
+    //Constructor
     public PasswordResetToken(User user, String token){
         super();
         this.token = token;
@@ -35,12 +37,13 @@ public class PasswordResetToken {
         this.expirationTime = calculateExpirationDate(EXPIRATION_TIME);
     }
 
-    public PasswordResetToken(String token){
+    /*public PasswordResetToken(String token){
         super();
         this.token = token;
         this.expirationTime = calculateExpirationDate(EXPIRATION_TIME);
     }
-
+     */
+    //Method to calculate expiration time
     private Date calculateExpirationDate(int expirationTime) {
         Calendar calender = Calendar.getInstance();
         calender.setTimeInMillis(new Date().getTime());
