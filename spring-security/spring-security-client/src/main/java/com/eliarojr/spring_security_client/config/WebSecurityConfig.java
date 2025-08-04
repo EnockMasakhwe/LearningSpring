@@ -15,7 +15,8 @@ public class WebSecurityConfig {
 
     private static final String [] WHITE_LIST_URLS = {
             "/hello",
-            "/register"
+            "/register",
+            "/verifyRegistration"
     };
 
     @Bean
@@ -30,6 +31,7 @@ public class WebSecurityConfig {
                 .cors(cors -> {}) // uses default cors configuration, or supply a source
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(WHITE_LIST_URLS).permitAll()
+                        .anyRequest().authenticated()
                 );
 
         return http.build();

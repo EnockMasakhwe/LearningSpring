@@ -36,11 +36,11 @@ public class RegistrationController {
         if (result.equalsIgnoreCase("valid")){
             return "User verified successfully.";
         }
-        return "Bad user!";
+        return "Error! There was a problem with your verification";
 
     }
 
     private String applicationUrl(HttpServletRequest request) {
-        return "http://" + request.getServerName() + ":" + request.getServerPort() + request.getServletPath();
+        return "http://" + request.getServerName() + ":" + request.getServerPort();
     }
 }
