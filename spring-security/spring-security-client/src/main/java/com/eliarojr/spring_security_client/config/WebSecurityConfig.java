@@ -20,7 +20,8 @@ public class WebSecurityConfig {
             "/verifyRegistration",
             "/resendVerifyToken*",
             "/resetPassword",
-            "/savePassword"
+            "/savePassword",
+            "/changePassword"
     };
 
     //Password encoder to make sure that the password can't be read even by the program
