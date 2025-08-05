@@ -119,13 +119,14 @@ public class AuthorizationServerConfig {
     public AuthorizationServerSettings authorizationServerSettings() {
         return AuthorizationServerSettings.builder()
                 .issuer("http://localhost:9000")
-                .authorizationEndpoint("/oauth2/v1/authorize")
+                /*.authorizationEndpoint("/oauth2/v1/authorize")
                 .tokenEndpoint("/oauth2/v1/token")
                 .tokenIntrospectionEndpoint("/oauth2/v1/introspect")
                 .tokenRevocationEndpoint("/oauth2/v1/revoke")
                 .jwkSetEndpoint("/oauth2/v1/jwks")
                 .oidcUserInfoEndpoint("/userinfo")
                 .oidcClientRegistrationEndpoint("/connect/register")
+                 */
                 .build();
     }
 
