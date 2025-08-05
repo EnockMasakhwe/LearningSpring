@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     //Simple API
-    @GetMapping("/hello")
+    @GetMapping("/api/hello")
     public String helloMessage(){
         return "Hello, welcome to my Security app!";
     }
