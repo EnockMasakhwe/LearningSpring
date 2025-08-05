@@ -98,7 +98,7 @@ public class RegistrationController {
             return "Invalid old password!";
         }
 
-        //Save password
+        //Save changed password
         userService.changePassword(user, passwordModel.getNewPassword());
         return "Password changed successfully.";
     }
