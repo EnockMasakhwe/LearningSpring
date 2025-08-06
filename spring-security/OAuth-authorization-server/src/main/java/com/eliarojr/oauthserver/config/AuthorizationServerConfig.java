@@ -54,7 +54,7 @@ public class AuthorizationServerConfig {
                 .redirectUri("http://127.0.0.1:8080/authorized")
                 .scope(OidcScopes.OPENID)
                 .scope("api.read")
-                .clientSettings(clientSettings()) // Pass the ClientSettings object
+                .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build()) // Pass the ClientSettings object
                 //.requireAuthorizationConsent(true) // Requires user consent for scopes
                 .build();
 
@@ -62,12 +62,13 @@ public class AuthorizationServerConfig {
     }
 
     //Client settings method
-    private ClientSettings clientSettings() {
+    /*private ClientSettings clientSettings() {
         return ClientSettings.builder()
                 .requireProofKey(true) // Enable PKCE for enhanced security
                 .requireAuthorizationConsent(true) // Requires user consent for scopes
                 .build();
     }
+     */
 
     @Bean
     //Default configs for public and private keys
