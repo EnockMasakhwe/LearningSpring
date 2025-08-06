@@ -18,6 +18,7 @@ import org.springframework.security.oauth2.server.authorization.client.InMemoryR
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
+import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -96,6 +97,14 @@ public class AuthorizationServerConfig {
             throw new IllegalStateException(ex);
         }
         return keyPair;
+    }
+
+    @Bean
+    //Provider settings config
+    public AuthorizationServerSettings authorizationServerSettings() {
+        return AuthorizationServerSettings.builder()
+                .issuer("http://auth-server:9000")
+                .build();
     }
 }
 
