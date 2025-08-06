@@ -68,6 +68,11 @@
             <artifactId>spring-security-oauth2-authorization-server</artifactId>
             <version>1.2.3</version> <!-- Use the latest version available -->
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-jose</artifactId>
+            <version>6.0.0</version> <!-- Use the latest version compatible with Spring Security 6 -->
+        </dependency>
 	</dependencies>
 
 	<build>
