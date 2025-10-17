@@ -1,12 +1,14 @@
 package com.eliarojr.apartment_management.service;
 
 import com.eliarojr.apartment_management.entity.Room;
+import com.eliarojr.apartment_management.error.RoomNotFoundException;
 import com.eliarojr.apartment_management.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class RoomServiceImpl implements RoomService {
@@ -25,8 +27,14 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public Room fetchRoomById(Long roomId) {
-        return roomRepository.findById(roomId).get();
+    public Room fetchRoomById(Long roomId) throws RoomNotFoundException {
+        Optional<Room> room = roomRepository.findById(roomId);
+
+        if (!room.isPresent()){
+            throw new RoomNotFoundException("Room not available!");
+        }
+        
+        return room.get();
     }
 
     @Override

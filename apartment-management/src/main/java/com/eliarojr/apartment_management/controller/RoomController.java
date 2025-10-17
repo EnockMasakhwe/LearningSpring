@@ -1,6 +1,7 @@
 package com.eliarojr.apartment_management.controller;
 
 import com.eliarojr.apartment_management.entity.Room;
+import com.eliarojr.apartment_management.error.RoomNotFoundException;
 import com.eliarojr.apartment_management.service.RoomService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -31,7 +32,7 @@ public class RoomController {
     }
 
     @GetMapping("/rooms/id/{id}")
-    public Room fetchRoomById(@PathVariable("id")Long roomId){
+    public Room fetchRoomById(@PathVariable("id")Long roomId) throws RoomNotFoundException {
         LOGGER.info("Inside fetchRoomById of RoomController");
         return roomService.fetchRoomById(roomId);
     }
