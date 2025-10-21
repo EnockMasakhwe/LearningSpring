@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -32,7 +30,7 @@ class RoomServiceTest {
                 .roomCode("VS-12")
                 .roomId(1L)
                 .build();
-        Mockito.when(roomRepository.findById(1L)).thenReturn(Optional.ofNullable(room));
+        Mockito.when(roomRepository.findRoomByRoomNameIgnoreCase("2A")).thenReturn(room);
     }
 
     @Test
