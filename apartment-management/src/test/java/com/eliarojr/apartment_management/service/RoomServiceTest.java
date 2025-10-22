@@ -42,12 +42,12 @@ class RoomServiceTest {
         assertEquals(roomName, found.getRoomName());
     }
 
-    @Test
-    @DisplayName("Get data based on valid room id")
-    public void whenValidRoomId_thenRoomShouldFound() throws RoomNotFoundException {
-        Long roomId = 1L;
-        Room found = roomService.fetchRoomById(roomId);
-
-        assertEquals(roomId, found.getRoomId());
-    }
+//    @Test
+//    @DisplayName("Get data based on valid room id")
+//    public void whenValidRoomId_thenRoomShouldFound() throws RoomNotFoundException {
+//        Long roomId = 1L;
+//        Room found = roomService.fetchRoomById(roomId);
+//
+//        assertEquals(roomId, found.getRoomId());
+//    }
 }

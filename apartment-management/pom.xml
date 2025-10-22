@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.eliarojr</groupId>
 	<artifactId>apartment-management</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>apartment-management</name>
 	<description>Practice project for Springboot, JPA and Security</description>
 	<url/>
