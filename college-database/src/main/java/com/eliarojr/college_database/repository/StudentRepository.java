@@ -3,6 +3,7 @@ package com.eliarojr.college_database.repository;
 import com.eliarojr.college_database.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -42,5 +43,12 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
             nativeQuery = true
     )
     String getStudentFirstNameByEmailAddressNative(String emailId);
+
+    //Native named param query (convenient for more than one params)
+    @Query(
+            value = "SELECT s.first_name FROM tbl_student s WHERE s.email_address = :emailId",
+            nativeQuery = true
+    )
+    String getStudentFirstNameByEmailAddressNativeNamedParam(@Param("emailId") String emailId);
 
 }
