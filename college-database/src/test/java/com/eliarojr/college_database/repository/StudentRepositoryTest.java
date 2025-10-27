@@ -51,5 +51,41 @@ class StudentRepositoryTest {
         List<Student> studentList = studentRepository.findAll();
         System.out.println("studentList = " + studentList);
     }
+    
+    @Test
+    public void printStudentByFirstName(){
+        List<Student> studentList = studentRepository.findByFirstName("Raila");
+        System.out.println("studentList = " + studentList);
+    }
+    
+    @Test
+    public void printStudentByFirstNameContaining(){
+        List<Student> studentList = studentRepository.findByFirstNameContaining("rai");
+        System.out.println("studentList = " + studentList);
+    }
+    
+    @Test
+    public void printStudentByLastNameIgnoreCase(){
+        List<Student> studentList = studentRepository.findByLastNameIgnoreCase("odinga");
+        System.out.println("studentList = " + studentList);
+    }
+    
+    @Test
+    public void printStudentByGuardianName(){
+        List<Student> studentList = studentRepository.findByGuardianName("Raila Odinga");
+        System.out.println("studentList = " + studentList);
+    }
+    
+    @Test
+    public void printStudentBySecondNameNotNull(){
+        List<Student> studentList = studentRepository.findByLastNameNotNull();
+        System.out.println("studentList = " + studentList);
+    }
+
+    @Test
+    public void printStudentByFirstNameAndLastName(){
+        Student student = studentRepository.findByFirstNameAndLastName("Raila","Odinga");
+        System.out.println("student = " + student);
+    }
 
 }
