@@ -60,6 +60,6 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
             value = "UPDATE tbl_student SET first_name = :firstName WHERE email_address = :emailId",
             nativeQuery = true
     )
-    int updateStudentFirstNameByEmailId(@Param("firstName") String firstName, @Param("emailId") String emailId);
+    void updateStudentFirstNameByEmailId(@Param("firstName") String firstName, @Param("emailId") String emailId);
 
 }
