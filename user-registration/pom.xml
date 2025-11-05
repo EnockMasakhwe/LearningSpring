@@ -17,6 +17,7 @@
 
     <modules>
         <module>user-registration-client</module>
+        <module>OAuth-authorization-server</module>
     </modules>
 
 </project>
