@@ -1,5 +1,6 @@
 package com.eliarojr.oauth_server.config;
 
+import com.eliarojr.oauth_server.service.CustomAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

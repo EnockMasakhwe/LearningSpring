@@ -9,6 +9,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @EnableWebSecurity
 @Configuration
 public class WebSecurityConfig {
@@ -20,7 +22,8 @@ public class WebSecurityConfig {
             "/resendVerificationToken*",
             "/resetPassword",
             "/saveResetPassword",
-            "/changePassword"
+            "/changePassword",
+            "/login"
     };
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -33,7 +36,14 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable) // Disable CSRF for simplicity (enable in production if needed)
                 .cors(cors -> {}) // Uses default CORS configs
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(WHITE_LIST_URLS).permitAll()); // Allow public access to whitelisted URLs
+                        .requestMatchers(WHITE_LIST_URLS).permitAll()// Allow public access to whitelisted URLs
+                        .requestMatchers("/api/**").authenticated() // Require authentication for /api/**
+                .anyRequest().authenticated() // All other endpoints require authentication
+                )
+                .oauth2Login(oauth2Login -> oauth2Login
+                .loginPage("/oauth2/authorization/api-client-oidc") // Redirect to OAuth 2.0 login
+        )
+                .oauth2Client(withDefaults()); // Enable OAuth 2.0 client support
 
 
                 return httpSecurity.build();

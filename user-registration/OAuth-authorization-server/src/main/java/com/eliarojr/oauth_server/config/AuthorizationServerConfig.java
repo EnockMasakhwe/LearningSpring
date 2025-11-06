@@ -93,8 +93,8 @@ public class AuthorizationServerConfig {
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri("http://localhost:8086/login/oauth2/code/api-client-oidc")
-                .redirectUri("http://localhost:8086/authorized")
+                .redirectUri("http://localhost:8085/login/oauth2/code/api-client-oidc")
+                .redirectUri("http://localhost:8085/authorized")
                 .scope(OidcScopes.OPENID)
                 .scope("api.read")
                 .clientSettings(clientSettings()) // Pass the ClientSettings object
