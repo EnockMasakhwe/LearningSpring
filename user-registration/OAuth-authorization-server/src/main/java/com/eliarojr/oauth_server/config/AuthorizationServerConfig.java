@@ -70,20 +70,6 @@ public class AuthorizationServerConfig {
         return http.build();
     }
 
-     //BEAN 2: The "Front Door Bouncer" for all other requests.
-    @Bean
-    @Order(2)
-    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests(authorize -> authorize
-                        .anyRequest().authenticated() // Secure all other requests
-                )
-                // This is where the form login page is configured
-                .formLogin(Customizer.withDefaults());
-
-        return http.build();
-    }
-
     @Bean
     //Default registered client repository config
     public RegisteredClientRepository registeredClientRepository(PasswordEncoder passwordEncoder) {
