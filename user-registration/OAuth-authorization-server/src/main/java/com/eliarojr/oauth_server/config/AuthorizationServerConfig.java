@@ -11,7 +11,6 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
@@ -19,12 +18,12 @@ import org.springframework.security.oauth2.core.oidc.OidcScopes;
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
-import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer;
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -33,20 +32,23 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
 
 @Configuration(proxyBeanMethods = false)
-@EnableWebSecurity
 public class AuthorizationServerConfig {
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
     //BEAN 1: The "VIP Bouncer" for OAuth2 endpoints.
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
     public SecurityFilterChain authServerSecurityFilterChain(HttpSecurity http) throws Exception {
+        // 1. Create ONE instance of the configurer
+        OAuth2AuthorizationServerConfigurer authorizationServerConfigurer =
+                OAuth2AuthorizationServerConfigurer.authorizationServer();
 
-        // STEP 1: Apply default security (the new way, replacing applyDefaultSecurity)
-        // This line is a complete statement.
-        http.with(OAuth2AuthorizationServerConfigurer.authorizationServer(), Customizer.withDefaults());
+        // 2. Get the RequestMatcher from THIS instance
+        RequestMatcher endpointsMatcher = authorizationServerConfigurer.getEndpointsMatcher();
+
+        // 3. Apply the matcher to the HttpSecurity object
+        http.securityMatcher(endpointsMatcher);
+
+        // STEP 1: Apply the SAME configurer instance (NOT a new one)
+        http.with(authorizationServerConfigurer, Customizer.withDefaults());
 
         // STEP 2: Get the configurer and apply OIDC customizations
         // This is a separate chain of configuration.
@@ -92,7 +94,7 @@ public class AuthorizationServerConfig {
     //Client settings method
     private ClientSettings clientSettings() {
         return ClientSettings.builder()
-                .requireProofKey(true) // Enable PKCE for enhanced security
+                //.requireProofKey(true) // Enable PKCE for enhanced security
                 .requireAuthorizationConsent(true) // Requires user consent for scopes
                 .build();
     }
