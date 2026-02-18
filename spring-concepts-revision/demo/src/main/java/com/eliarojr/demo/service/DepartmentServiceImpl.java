@@ -1,12 +1,14 @@
 package com.eliarojr.demo.service;
 
 import com.eliarojr.demo.entity.Department;
+import com.eliarojr.demo.error.DepartmentNotFoundException;
 import com.eliarojr.demo.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
@@ -25,8 +27,14 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department fetchDepartmentById(Integer departmentId) {
-        return departmentRepository.findById(departmentId).get();
+    public Department fetchDepartmentById(Integer departmentId) throws DepartmentNotFoundException {
+        Optional <Department> department = departmentRepository.findById(departmentId);
+
+        if (!department.isPresent()){
+            throw new DepartmentNotFoundException("Oups! Department not available!");
+        }
+
+        return department.get();
     }
 
     @Override

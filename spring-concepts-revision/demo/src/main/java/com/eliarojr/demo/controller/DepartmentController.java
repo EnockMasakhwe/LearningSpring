@@ -1,6 +1,7 @@
 package com.eliarojr.demo.controller;
 
 import com.eliarojr.demo.entity.Department;
+import com.eliarojr.demo.error.DepartmentNotFoundException;
 import com.eliarojr.demo.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/departments/id/{id}")
-    public Department fetchDepartmentById(@PathVariable("id") Integer departmentId){
+    public Department fetchDepartmentById(@PathVariable("id") Integer departmentId) throws DepartmentNotFoundException {
         return departmentService.fetchDepartmentById(departmentId);
     }
 
