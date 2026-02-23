@@ -1,7 +1,6 @@
 package com.eliarojr.demo.error;
 
 import com.eliarojr.demo.entity.ErrorMessage;
-import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
