@@ -61,4 +61,28 @@ class StudentRepositoryTest {
         System.out.println("student = " + student);
     }
 
+    @Test
+    void printStudentByFirstName(){
+        Student student = studentRepository.findByFirstName("enock");
+        System.out.println("student = " + student);
+    }
+    @Test
+     void printStudentByFirstNameIgnoreCase(){
+        Student student = studentRepository.findByFirstNameIgnoreCase("faith");
+         System.out.println("student = " + student);
+     }
+
+     @Test
+     void printStudentByGuardianName(){
+        List<Student> studentList = studentRepository.findByGuardianName("Samuel Masakhwe");
+         System.out.println("student = " + studentList);
+     }
+
+     @Test
+     void printStudentByEmailIdContaining(){
+        List<Student> studentList = studentRepository.findByEmailIdContaining("eliaro");
+         System.out.println("studentList = " + studentList);
+     }
+
+
 }
