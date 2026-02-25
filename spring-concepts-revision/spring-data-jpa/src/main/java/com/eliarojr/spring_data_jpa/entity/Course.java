@@ -28,8 +28,8 @@ public class Course {
     private String courseTitle;
     private Integer credit;
 
-//    @OneToOne(
-//            mappedBy = "courseMaterialId"
-//    )
-//    private CourseMaterial courseMaterial;
+    @OneToOne(
+            mappedBy = "course"
+    )
+    private CourseMaterial courseMaterial;
 }
