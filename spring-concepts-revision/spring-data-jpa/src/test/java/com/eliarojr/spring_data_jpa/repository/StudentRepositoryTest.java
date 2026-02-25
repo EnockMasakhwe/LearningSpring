@@ -107,6 +107,11 @@ class StudentRepositoryTest {
         System.out.println("student = " + student);
     }
 
+    @Test
+    void testUpdateStudentFirstNameByEmailId(){
+        studentRepository.updateStudentFirstNameByEmailId("Ruth", "estherlyimo@gmail.com");
+    }
+
 
 
 }
