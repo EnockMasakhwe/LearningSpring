@@ -2,7 +2,6 @@ package com.eliarojr.spring_data_jpa.repository;
 
 import com.eliarojr.spring_data_jpa.entity.Guardian;
 import com.eliarojr.spring_data_jpa.entity.Student;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -99,6 +98,12 @@ class StudentRepositoryTest {
     @Test
     void printGetStudentByEmailAddressNative(){
         Student student = studentRepository.getStudentByEmailAddressNative("enockeliaro@gmail.com");
+        System.out.println("student = " + student);
+    }
+
+    @Test
+    void printGetStudentByEmailAddressNativeNamedParam(){
+        Student student = studentRepository.getStudentByEmailAddressNativeNamedParam("enockeliaro@gmail.com");
         System.out.println("student = " + student);
     }
 
