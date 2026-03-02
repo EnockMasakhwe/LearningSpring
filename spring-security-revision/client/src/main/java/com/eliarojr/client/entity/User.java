@@ -15,10 +15,8 @@ public class User {
     private String email;
 
     @Column(length = 60)
-    private String role;
     private String password;
-
-
+    private String role;
     private boolean enabled = false;
 
 }

@@ -1,8 +1,10 @@
 package com.eliarojr.client.service;
 
 import com.eliarojr.client.entity.User;
+import com.eliarojr.client.entity.VerificationToken;
 import com.eliarojr.client.model.UserModel;
 import com.eliarojr.client.repository.UserRepository;
+import com.eliarojr.client.repository.VerificationTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,8 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private VerificationTokenRepository verificationTokenRepository;
 
     @Override
     public User registerUser(UserModel userModel) {
@@ -29,5 +33,12 @@ public class UserServiceImpl implements UserService{
         userRepository.save(user);
 
         return user;
+    }
+
+    @Override
+    public void saveVerificationToken(String token, User user) {
+        VerificationToken verificationToken = new VerificationToken(user, token);
+
+        verificationTokenRepository.save(verificationToken);
     }
 }
