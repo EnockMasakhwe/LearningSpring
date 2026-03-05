@@ -9,6 +9,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
@@ -39,7 +41,11 @@ public class WebSecurityConfig {
                         .requestMatchers(WHITE_LIST_URLS).permitAll() // Allow public access to whitelisted URLs
                         .requestMatchers("/api/**").authenticated() // Require authentication for /api/**
                         .anyRequest().authenticated() // All other endpoints require authentication
-                );
+                )
+                .oauth2Login(oauth2Login -> oauth2Login
+                .loginPage("/oauth2/authorization/api-client-oidc") // Redirect to OAuth 2.0 login
+                )
+                .oauth2Client(withDefaults()); // Enable OAuth 2.0 client support
 
         return http.build();
     }
