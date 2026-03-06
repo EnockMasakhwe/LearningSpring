@@ -17,6 +17,7 @@ public class HelloController {
     @Autowired
     private WebClient webClient;
 
+    //Simple API
     @GetMapping("/hello")
     public String helloWorld(Principal principal){
         return "Hello" + principal.getName() + ", Welcome to my SpringBoot App!";
